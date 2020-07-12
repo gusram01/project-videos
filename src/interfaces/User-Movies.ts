@@ -33,5 +33,4 @@ export interface TemplateControl {
   user?: HTMLInputElement;
   password?: HTMLInputElement;
   title?: HTMLInputElement;
-  idMovie?: HTMLInputElement;
 }

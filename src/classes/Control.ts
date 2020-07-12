@@ -44,7 +44,7 @@ export default class Control {
   }
 
   public search() {
-    const { title, idMovie } = this.args;
+    const { title } = this.args;
     const index = this.indexSearch();
 
     switch (index) {
@@ -63,22 +63,6 @@ export default class Control {
             this.renderArray(movies);
             this.arrayListeners(movies.map((m: Movie) => m.imdbID));
           }).catch(console.log);
-        break;
-      case 3:
-        ApiMovies.searchMovieById(idMovie.value)
-          .then(movie => {
-            this.previewMoviesContainer.innerHTML = '';
-            this.renderOne(movie);
-            this.listener(movie.imdbID);
-          }).catch(console.log);
-        break;
-      case 4:
-        if (idMovie.value.length !== 0) {
-          idMovie.style.background = 'var(--error)';
-          setTimeout(() => {
-            idMovie.style.background = 'var(--font1)';
-          }, 600);
-        }
         break;
       default: ;
     }
@@ -115,7 +99,6 @@ export default class Control {
         btnFavorites.textContent = `close Fav's`;
         this.renderFavorites();
 
-
       }
 
     }
@@ -129,11 +112,9 @@ export default class Control {
   }
 
   private indexSearch() {
-    const { title, idMovie } = this.args;
-    if (title.value.length === 0 && idMovie.value.length === 0) return 1;
-    if (title.value.length !== 0 && idMovie.value.length === 0) return 2;
-    if (title.value.length === 0 && idMovie.value.length !== 0) return 3;
-    if (title.value.length !== 0 && idMovie.value.length !== 0) return 4;
+    const { title } = this.args;
+    if (title.value.length === 0) return 1;
+    if (title.value.length !== 0) return 2;
 
   }
 
@@ -168,7 +149,6 @@ export default class Control {
       document.querySelector(`#${id}`).remove();
     });
 
-
   }
 
   private arrayListeners(moviesID: string[]) {
@@ -193,6 +173,9 @@ export default class Control {
 
   private renderFavorites() {
     const favoritesContainer: HTMLDivElement = document.querySelector('.favorites_container');
+    const btnFavorites: HTMLAnchorElement = document.querySelector('#btn_favorites');
+    const sectionSearch: HTMLElement = document.querySelector('.search_container');
+    const labelFavorites: HTMLElement = document.querySelector('#empty_favorites');
     const userActual = sessionStorage.getItem('Us3rActu4l');
 
     const userParse: User = JSON.parse(userActual);
@@ -206,8 +189,19 @@ export default class Control {
 
       delFavorite.addEventListener('click', (ev) => {
         ev.preventDefault();
-        updateUser.delFavoriteMovie(movie)
+
+
+        updateUser.delFavoriteMovie(movie);
         document.querySelector(`#details${movie.imdbID}`).remove();
+        if (favoritesContainer.childElementCount === 0) {
+          favoritesContainer.innerHTML = '';
+          sectionSearch.style.display = 'flex';
+          labelFavorites.style.display = 'flex';
+          btnFavorites.textContent = `Favorites`;
+        }
+
+
+
       });
 
     });

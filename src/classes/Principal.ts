@@ -14,7 +14,6 @@ export default class Principal {
     const user: HTMLInputElement = document.querySelector('#user');
     const password: HTMLInputElement = document.querySelector('#password');
     const title: HTMLInputElement = document.querySelector('#title');
-    const idMovie: HTMLInputElement = document.querySelector('#imdb_id');
     const btnLogin: HTMLAnchorElement = document.querySelector('#btn_login');
     const btnSearch: HTMLButtonElement = document.querySelector('#btn_find');
     const btnClear: HTMLButtonElement = document.querySelector('#btn_reset');
@@ -23,7 +22,7 @@ export default class Principal {
     const previewMovieContainer: HTMLDivElement = document.querySelector('#parent_container');
     const favoritesContainer: HTMLDivElement = document.querySelector('.favorites_container');
 
-    const control = new Control({ user, password, title, idMovie });
+    const control = new Control({ user, password, title });
 
 
     window.addEventListener('load', () => {
