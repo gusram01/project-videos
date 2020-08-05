@@ -28,9 +28,3 @@ export interface Movie {
   Type?: string;
 
 }
-
-export interface TemplateControl {
-  user?: HTMLInputElement;
-  password?: HTMLInputElement;
-  title?: HTMLInputElement;
-}

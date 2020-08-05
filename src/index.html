@@ -18,32 +18,29 @@
 
     </header>
 
-    <main>
+    <main class="main">
 
-      <section class="login_container">
+      <form class="login_container" id="login_form">
 
         <div class="item_container">
           <h2 class="item_container_label">Enjoy it!!</h2>
-
         </div>
 
         <div class="item_container">
           <label class="label" for="user">User</label>
-          <input class="input" type="text" name="user" id="user" autofocus>
+          <input class="input" type="text" name="user" id="user" autocomplete="login-user">
         </div>
 
         <div class="item_container">
           <label class="label" for="password">Password</label>
-          <input class="input" type="password" name="password" id="password">
+          <input class="input" type="password" name="password" id="password" autocomplete="login-password">
         </div>
 
         <div class="item_container">
-          <div class="btn">
-            <a href="/search" class="btn" id="btn_login">LogIn</a>
-          </div>
+          <button class="btn" id="btn_login">LogIn</button>
         </div>
 
-      </section>
+      </form>
 
     </main>
     <footer>

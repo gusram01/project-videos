@@ -14,7 +14,7 @@
 
     <header>
 
-      <nav>
+      <nav class="nav">
         <ul class="menu_search">
           <div class="btn" id="btn_favorites">Favorites</div>
           <li class="btn">
@@ -24,31 +24,30 @@
       </nav>
     </header>
 
-    <main>
+    <main class="main">
 
-      <section class="search_container">
+      <form class="search_container" id="search_form">
 
         <div class="item_container">
           <h3 class="item_container_label">Find info about your favorite movie!</h3>
-
         </div>
 
         <div class="item_container item_title">
           <label for="title">Title</label>
-          <input type="text" name="title" id="title" autofocus>
+          <input type="text" name="title" id="title">
         </div>
 
         <div class="item_container btn_container">
-          <div class="btn" id="btn_find">Search!</div>
-          <div class="btn" id="btn_reset">Clear Screen</div>
+          <button class="btn" id="btn_find">Search!</button>
+          <button class="btn" id="btn_reset">Clear Screen</button>
         </div>
-      </section>
+
+      </form>
 
       <section class="results_container">
 
         <div class="preview_container" id="parent_container">
         </div>
-
 
       </section>
 

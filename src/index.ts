@@ -1,11 +1,12 @@
 import './styles.css';
 import '../assets/icon.svg';
 import '../assets/no-image.jpg';
-import Principal from './classes/Principal';
+import { actualPath } from './js/principal';
 
-const footer = document.querySelector('#leyend_footer');
+const footer = document.getElementById('leyend_footer');
 const actualdate = new Date().getFullYear();
 
 footer.innerHTML = `Gus Ramírez, ${actualdate} <sup>&copy;</sup>`;
 
-Principal.main();
+window.addEventListener('DOMContentLoaded', actualPath);
+

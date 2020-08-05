@@ -1,7 +1,7 @@
 {
-  "name": "videos",
+  "name": "movies",
   "version": "1.0.0",
-  "description": "manage api Videos",
+  "description": "Browser Movies Info",
   "main": "server.js",
   "scripts": {
     "dev": "webpack --config webpack.config.dev.js",
@@ -10,7 +10,7 @@
   },
   "keywords": [
     "tsc",
-    "basic",
+    "movies-info",
     "API"
   ],
   "author": "Gus Ramirez",
