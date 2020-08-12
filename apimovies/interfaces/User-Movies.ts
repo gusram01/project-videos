@@ -7,6 +7,12 @@ export interface User {
   }
 }
 
+export interface responseOmdb {
+  Search: Movie[];
+  totalResults: string;
+  Response: string;
+}
+
 export interface Movie {
 
   imdbID?: string;

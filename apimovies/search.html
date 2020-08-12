@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../assets/icon.svg" type="image/svg">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <title>Find info for your Favorite Movie</title>
+  </head>
+
+  <body class="body body_search">
+
+    <header class="header_search">
+
+      <nav class="nav">
+        <ul class="nav_search">
+          <li class="btn">
+            <a class="link btn" href="#" id="btn_favorites">Favorites</a>
+          </li>
+          <li class="btn">
+            <a class="link btn" href="/apimovies" id="btn_close">Log Out</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="main search">
+      <div class="search_container">
+
+        <form class="search" id="search_form">
+
+          <div class="item_container">
+            <h3 class="item_title">Find info about your favorite movie!</h3>
+          </div>
+
+          <div class="item_container item_search">
+            <label class="label" for="title">Movie title</label>
+            <input class="input" type="text" name="title" id="title">
+          </div>
+
+          <div class="item_container btn_container">
+            <button class="btn" id="btn_find">Search!</button>
+            <button class="btn" id="btn_reset">Clear Screen</button>
+          </div>
+
+        </form>
+      </div>
+
+      <section class="results_container">
+
+        <div class="preview_container" id="parent_container">
+        </div>
+
+      </section>
+
+      <section class="detail_container">
+
+      </section>
+
+      <section class="favorites">
+        <div class="favorites_container">
+
+
+        </div>
+
+        <h3 class="empty_favorites">Favorites is empty</h3>
+
+      </section>
+
+    </main>
+    <footer class="footer">
+      <span class="span_footer" id="leyend_footer">Gus Ramírez, 2020 <sup>&copy;</sup></span>
+    </footer>
+  </body>
+
+</html>

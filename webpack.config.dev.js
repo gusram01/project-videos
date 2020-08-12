@@ -3,46 +3,66 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-module.exports = {
+function recursiveIssuer(m) {
+  if (m.issuer) {
+    return recursiveIssuer(m.issuer);
+  } else if (m.name) {
+    return m.name;
+  } else {
+    return false;
+  }
+}
 
+module.exports = {
   mode: 'development',
-  entry: { home: './src/index.ts' },
-  devServer: {
-    contentBase: './public',
-  },
+  entry: { bundle: './apimovies/index.ts' },
   resolve: {
     extensions: [ '.tsx', '.ts', '.js' ],
   },
-
   output: {
-    filename: '[name]/[name].js',
+    filename: '[name]/bundle.[hash].js',
     path: path.resolve(__dirname, 'public', 'apimovies'),
-    publicPath: '/',
-  },
+    publicPath: '/apimovies',
 
+  },
+  devServer: {
+    open: true,
+    openPage: 'apimovies',
+    publicPath: '/apimovies'
+  },
   optimization: {
     namedModules: true,
     nodeEnv: 'development',
     noEmitOnErrors: false,
     minimize: false,
-    removeAvailableModules: false
-  },
+    removeAvailableModules: false,
+    concatenateModules: true,
+    checkWasmTypes: true,
+    splitChunks: {
+      cacheGroups: {
+        bundleStyles: {
+          name: 'bundle',
+          test: (m, c, entry = 'bundle') =>
+            m.constructor.name === 'CssModule' && recursiveIssuer(m) === entry,
+          chunks: 'all',
+          enforce: true,
+        }
 
+      },
+    },
+  },
   plugins: [
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
     new HtmlWebpackPlugin({
-      template: './src/index.html',
-      filename: '/index.html'
+      template: './apimovies/index.html',
+      filename: './index.html'
     }),
-
     new HtmlWebpackPlugin({
-      template: './src/search.html',
+      template: './apimovies/search.html',
       filename: './search/index.html'
     }),
-
-    new MiniCssExtractPlugin({ filename: '[name]/[name].css' }),
+    new MiniCssExtractPlugin({ filename: '[name]/bundle.[hash].css' }),
   ],
-
   module: {
     rules: [
       {
@@ -57,13 +77,10 @@ module.exports = {
 
       {
         test: /\.css$/i,
-        exclude: /styles\.css$/,
-        use: [ 'style-loader', 'css-loader' ]
-      },
-
-      {
-        test: /styles\.css$/,
-        use: [ MiniCssExtractPlugin.loader, 'css-loader' ]
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+        ]
 
       },
 
@@ -74,8 +91,8 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: '../assets/',
-              publicPath: '../assets/',
+              outputPath: '/assets/img',
+              publicPath: '../../assets/img',
               emitFile: true,
               esModule: false
             }
@@ -84,5 +101,4 @@ module.exports = {
       },
     ]
   }
-
 };

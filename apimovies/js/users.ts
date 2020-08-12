@@ -4,8 +4,8 @@ const dummyUser: User = { _id: 'none', data: { user: 'no', password: 'ne' } }
 
 const storeUser = (user: User) => {
   const usersStorage = localStorage.getItem('stor4g3AppV1d3o.l0cal');
-  const usersJSON: User[] = JSON.parse(usersStorage) || [dummyUser];
-  const userLocal: User = usersJSON.find(element => element._id === user._id);
+  const usersJSON: User[] = JSON.parse(usersStorage!) || [dummyUser];
+  const userLocal: User | undefined = usersJSON.find(element => element._id === user._id);
 
   (!usersStorage)
     //  Important! must be JSON.stringify(Array<User>) in the very first beggining
@@ -26,10 +26,10 @@ const storeUser = (user: User) => {
  */
 
 export const actualUser = () => {
-
-  const idUser = JSON.parse(sessionStorage.getItem('Us3rActu4l'))._id;
+  const userSession = sessionStorage.getItem('Us3rActu4l');
+  const idUser = JSON.parse(userSession!)._id;
   const usersArray = localStorage.getItem('stor4g3AppV1d3o.l0cal');
-  const usersJSON: User[] = JSON.parse(usersArray);
+  const usersJSON: User[] = JSON.parse(usersArray!);
   const userLocalStorage: User | undefined = usersJSON.find(element => element._id === idUser);
   const indexUserLocalStorage: number = usersJSON.findIndex(element => element._id === idUser);
 
