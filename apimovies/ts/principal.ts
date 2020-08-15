@@ -27,14 +27,14 @@ const search = (ev: Event) => {
 }
 
 const butttons = (ev: Event) => {
+  const loginContainer = document.getElementById('login-container') as HTMLDivElement;
   const element = ev.target as HTMLElement
   if (element.id === 'btn_close') return sessionStorage.clear();
   if (element.id === 'btn_favorites') return validateFavorites(element);
-  if (element.id === 'login_continue') {
-    element.parentElement!.firstElementChild!.nextElementSibling!.classList.toggle('after');
-    element.parentElement!.firstElementChild!.classList.toggle('after');
-    element.classList.toggle('after');
-  }
+  if (element.id === 'login_continue') return loginContainer.classList.toggle('after');
+  if (element.id === 'login-container') return loginContainer.classList.toggle('after');
+  if (element.id === 'close-login') return loginContainer.classList.toggle('after');
+
 }
 
 const redirectHome = () => {
@@ -50,12 +50,10 @@ const redirectHome = () => {
  */
 
 export const actualPath = (ev: Event) => {
+  (location.pathname === '/apimovies')
+    ? (sessionStorage.clear()
+      , loginForm.addEventListener('submit', login))
+    : (redirectHome()
+      , searchForm.addEventListener('submit', search));
   body.addEventListener('click', butttons);
-  if (location.pathname === '/apimovies') {
-    sessionStorage.clear();
-    loginForm.addEventListener('submit', login);
-  }
-  if (location.pathname === '/apimovies/search')
-    redirectHome();
-  searchForm.addEventListener('submit', search);
 };

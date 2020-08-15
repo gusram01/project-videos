@@ -1,0 +1,79 @@
+
+/**
+ * ==================================
+ *      SPECIFIC MAIN LOGIN
+ * ==================================
+ */
+
+.preview_home{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 350px;
+  transform-style: preserve-3d;
+  perspective: 1100px;
+}
+.clapperboard{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  height: 80%;
+  background: greenyellow;
+  transform-style: preserve-3d;
+  transform-origin: bottom left;
+  transform: rotateX(30deg) rotateY(-15deg) rotateZ(-25deg) translateX(20%) translateY(30%);
+  transition: transform 300ms ease;
+}
+.clapperboard:hover{
+  transform: rotateX(0) rotateY(0) rotateZ(0) translateX(0) translateX(0);
+}
+.clapperboard:hover .clap_title{
+  transform: rotateZ(0);
+}
+.clap_title,
+.clap_body{
+  position: absolute;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  left: 0;
+}
+.clap_title{
+  height: 20%;
+  top: 0;
+  background: brown;
+  transform-origin: bottom left;
+  transform: rotateZ(-15deg);
+  transition: transform 300ms ease;
+}
+.clap_body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 80%;
+  bottom: 0;
+  background: yellow;
+  transform-origin: top left;
+
+
+}
+.img_prev{
+  position: absolute;
+  display: flex;
+  bottom: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  overflow: hidden;
+  pointer-events: none;
+
+}
+
+.img_prev img{
+  object-fit: contain;
+  object-position: 0 50%;
+}

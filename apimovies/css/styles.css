@@ -12,6 +12,17 @@
   --bg2-transparent: #1f4172aa;
   --bg3:var(--font2);
   --bg4: #acd5d6;
+  --bg5:#d2d2d2;
+
+  --bg-l: #fff;
+  --bg-d: #005;
+
+  --bg-l1: #fffa;
+  --bg-d1: #005a;
+  
+  --bg-l2: #fff4;
+  --bg-d2: #0054;
+
   --font:#d2d2d2;
   --font1:#ecb460;
   --font2:#fcd9b8;
@@ -21,7 +32,6 @@
   --error2: #febbbb;
   --linkActive: #BB86FC;
   --linkHover: #acd5d6;
-  /* --linkHover: #aaf255; */
 }
 
 *{ 
@@ -35,43 +45,30 @@
  * =================================
  */
 
- .body,
- .header_search,
- .nav_search,
- .main,
- .footer{
-   display: flex;
- }
-
-.body_login{
-  background: no-repeat fixed url("../../assets/img/login.jpg"), #000;
-  background-position: 50% 30%;
-}
-.body_search{
-  background: no-repeat fixed url("../../assets/img/search.jpg"), #000;
-  background-position: 50% 5%;
-}
-
 .body{
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat Alternates', sans-serif;
   font-size: 16px;
   color: var(--font1);
-  min-height: 100vh;
+}
+
+.header_search,
+.nav_search,
+.main{
+  display: flex;
+}
+
+.body_login{
+  overflow: hidden;
+  background: no-repeat fixed url("../../assets/img/login.jpg"), #000;
+  background-position: 50% 30%;
   background-size: 100%;
 }
 
-
-.header_login{
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  grid-auto-flow: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 80%;
-  height: 10vh;
+.body_search{
+  min-height: 100vh;
+  background: no-repeat fixed url("../../assets/img/search.jpg"), #000;
+  background-position: 50% 5%;
+  background-size: auto;
 }
 
 .header_search{
@@ -81,24 +78,11 @@
   color: var(--font1);
 }
 
-.footer{
+.main{
+  flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  width: 100%;
-  min-height: 8vh;
-  background: var(--bg1-transparent2);
-  transition: background 200ms;
-}
-
-.footer:hover,
-.footer:focus-within{
-  background: var(--bg1-transparent1);
-}
-
-.main{
-  color:  var(--font1);
-  align-items: flex-start;
-  justify-content: space-evenly;
+  min-height: 80vh;
 }
 
 .nav{
@@ -111,3 +95,19 @@
   align-items: center;
 }
 
+.footer{
+  position: sticky;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  bottom: -30vh;
+  width: 100%;
+  min-height: 40vh;
+  background: var(--bg1-transparent2);
+  transition: background 200ms;
+}
+
+.footer:hover,
+.footer:focus-within{
+  background: var(--bg1-transparent1);
+}
