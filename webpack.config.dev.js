@@ -15,7 +15,7 @@ function recursiveIssuer(m) {
 
 module.exports = {
   mode: 'development',
-  entry: { bundle: './apimovies/index.ts' },
+  entry: { bundle: './apimovies/ts/index.ts' },
   resolve: {
     extensions: [ '.tsx', '.ts', '.js' ],
   },
@@ -54,11 +54,11 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
     new HtmlWebpackPlugin({
-      template: './apimovies/index.html',
+      template: './apimovies/home/index.html',
       filename: './index.html'
     }),
     new HtmlWebpackPlugin({
-      template: './apimovies/search.html',
+      template: './apimovies/search/search.html',
       filename: './search/index.html'
     }),
     new MiniCssExtractPlugin({ filename: '[name]/bundle.[hash].css' }),
@@ -82,6 +82,11 @@ module.exports = {
           'css-loader',
         ]
 
+      },
+
+      {
+        test: /\.html$/i,
+        loader: 'html-loader',
       },
 
       {
