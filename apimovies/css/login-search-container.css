@@ -4,6 +4,23 @@
  * ==================================
  */
 
+
+
+ .body_search{
+  background: no-repeat fixed 
+    url("../../assets/img/search.jpg"), var(--bg1);
+  background-position: 50% 5%;
+  background-size: auto;
+}
+
+.header_search{
+  position: fixed;
+  height: 10vh;
+  z-index: 60;
+  color: var(--font1);
+}
+
+
 .login_container,
 .search_container{
   display: flex;
@@ -20,8 +37,8 @@
   height: 100%;
   opacity: 0;
   transform: scale(0, 0);
-  background: var(--bg-l1);
-  transition: opacity, transform 200ms;
+  background: var(--shadow-l1);
+  transition: transform 200ms ease, opacity 200ms ease;
   z-index: 200;
 }
 
@@ -41,11 +58,11 @@
   position: relative;
   display: grid;
   place-items: center;
-  width: 70%;
-  height: 50%;
+  width: 80%;
+  height: 60%;
   border-radius: 6px;
-  background: var(--bg-d1);
-  box-shadow: 2px 2px 5px #e8e8e852,
-            -2px -2px 5px #e8e8e852;
+  background: var(--bg1-transparent1);
+  box-shadow: 2px 2px 2px var(--shadow-l1),
+            -2px -2px 2px var(--shadow-l1);
 }
 

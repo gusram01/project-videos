@@ -50,7 +50,7 @@ const redirectHome = () => {
  */
 
 export const actualPath = (ev: Event) => {
-  (location.pathname === '/apimovies')
+  (location.pathname === '/apimovies/' || location.pathname === '/apimovies')
     ? (sessionStorage.clear()
       , loginForm.addEventListener('submit', login))
     : (redirectHome()
