@@ -5,9 +5,9 @@
  */
 
 :root{
-  --bg1: #00000d;
-  --bg1-transparent1: #00000de0;
-  --bg1-transparent2: #00000d39;
+  --bg1: #000004;
+  --bg1-transparent1: #000004e0;
+  --bg1-transparent2: #00000439;
   --bg2: #1f4172;
   --bg2-transparent: #1f4172aa;
   --bg3:var(--font2);
@@ -28,6 +28,7 @@
   --font2:#fad1ab;
   --font3:#aaf255;
   --font4: #ecf1f1;
+  --error0: #f03655;
   --error1: #d88291;
   --error2: #febbbb;
   --linkActive: #BB86FC;
@@ -76,7 +77,7 @@
   margin: 0;
   position: -webkit-sticky;
   position: sticky;
-  top: 95%;
+  top: 93%;
   height: 60px;
   background: var(--bg-nav);
 }
@@ -86,11 +87,11 @@
   align-items: flex-start;
   justify-content: center;
   grid-template-columns: 
-    repeat(auto-fit, minmax(5.2rem, 1fr));
+    repeat(auto-fit, minmax(4.5rem, 1fr));
   grid-auto-flow: column;
   list-style: none;
   text-align: center;
-  width: 96%;
+  width: 98%;
   margin: 0.5rem auto;
   padding: 0;
   overflow: hidden;
@@ -100,7 +101,7 @@
   flex-direction: column;
   justify-content: space-around;
   text-align: center;
-  height: 200px;
+  height: 215px;
   padding: 0 0 60px 0;
   background: var(--bg3);
   color: var(--font0);

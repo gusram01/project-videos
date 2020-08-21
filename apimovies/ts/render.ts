@@ -12,19 +12,24 @@ export const moviesPreview = (movies: Movie[], idsFavStorage: string[]) => {
 
     if (movie.Poster === 'N/A') movie.Poster = '/assets/no-image.jpg';
 
-    div.className = 'movie_container';
+    div.className = 'board';
 
     div.innerHTML = `
-      <div class="img_preview">
-        <img class= "image" src="${movie.Poster}" alt="${movie.Title}" width="300px" height="300px">
-      </div>  
-      <div class="description_movie">
-        <h2>"${movie.Title}"</h2>
-        <h4>Type: ${movie.Type}</h4>
-        <button class="btn btn_fav ${fav}" id="add${movie.imdbID}" data-fav="${movie.imdbID}">Add favorites</button>
-        <button class="btn btn_details " data-details="d${movie.imdbID}"><small>More Details</small></button>
+      <div class="img_prev">
+        <img src="${movie.Poster}" alt="${movie.Title}">
       </div>
 
+      <div class="board_title">
+        <h2 class="title_prev">${movie.Title}</h2>
+        <h4>Type: ${movie.Type}</h4>
+      </div>
+      <div class="board_body">
+        
+        <button class="btn more" data-details="d${movie.imdbID}">More Details</button>
+
+        <button class="btn ${fav}" id="add${movie.imdbID}"  data-fav="${movie.imdbID}"><i class="fas fa-heart favicon"></i></button>
+      
+      </div>
 `;
     fragment.appendChild(div);
   });
@@ -40,7 +45,7 @@ export const movieDetail = (movie: Movie) => {
   div.className = 'card_movie';
   div.innerHTML = `
       <div class="details_movie">
-        <button class="btn modal_close" data-close="${movie.imdbID}">&times;</button>
+        <a href="#" class="modal_close" data-close="${movie.imdbID}">&times;</a>
         <div class="image_detail_container">
           <img src="${movie.Poster}" alt="${movie.Title}" />
           <div class="rating"><span>imdbRating: ${movie.imdbRating}</span></div>

@@ -4,75 +4,112 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../../assets/icon.svg" type="image/svg">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-
     <title>Find info for your Favorite Movie</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <script src="https://kit.fontawesome.com/cfe24ae6ca.js" crossorigin="anonymous"></script>
   </head>
 
   <body class="body body_search">
+    <div class="body_search">
+      <header class="header_search">
 
-    <header class="header_search">
+        <nav class="nav">
+          <ul class="nav_search">
+            <li class="li_link">
+              <a class="link" href="#" id="btn_favorites">Favorites</a>
+            </li>
+            <li class="li_link">
+              <a class="link" href="/apimovies" id="btn_close">Log Out</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <main class="main search">
+        <div class="search_container">
+
+          <form class="search" id="search_form">
+
+            <div class="item_container">
+              <h3 class="item_title">Find info about your favorite movie!</h3>
+            </div>
+
+            <div class="item_container item_search">
+              <label class="label" for="title">Movie title</label>
+              <input class="input title" type="text" name="title" id="title">
+            </div>
+
+            <div class="item_container btn_container">
+              <button class="btn" id="btn_find">Search!</button>
+              <button class="btn" id="btn_reset">Clear Screen</button>
+            </div>
+
+          </form>
+        </div>
+
+        <section class="results_container">
+
+          <div class="preview_container" id="parent_container">
+          </div>
+
+        </section>
+
+        <section class="detail_container">
+
+        </section>
+
+        <section class="favorites">
+          <div class="favorites_container">
+
+
+          </div>
+
+          <h3 class="empty_favorites">Favorites is empty</h3>
+
+        </section>
+
+      </main>
+
 
       <nav class="nav">
-        <ul class="nav_search">
-          <li class="btn">
-            <a class="link btn" href="#" id="btn_favorites">Favorites</a>
+        <ul class="nav_container">
+          <li class="li_link">
+            <a href="/apimovies" class="link link_nav">Home</a>
           </li>
-          <li class="btn">
-            <a class="link btn" href="/apimovies" id="btn_close">Log Out</a>
+          <li class="li_link">
+            <a href="/" class="link link_nav">Main</a>
+          </li>
+          <li class="li_link">
+            <a href="/#portfolio" class="link link_nav">Portfolio</a>
+          </li>
+          <li class="li_link">
+            <a href="/#about" class="link link_nav">Contact</a>
           </li>
         </ul>
       </nav>
-    </header>
 
-    <main class="main search">
-      <div class="search_container">
+      <footer class="footer">
+        <span id="leyend_footer"></span>
+        <p>
+          <a class="link link_footer-login" href="https://twitter.com/GusGusdev" target="_blank"><i
+              class="fab fa-twitter social"></i></a>
+          <a class="link link_footer-login" href="https://github.com/gusram01" target="_blank"><i
+              class="fab fa-github social"></i></a>
+          <span>Repo: <a class="link link_footer-login" href="https://github.com/gusram01/project-videos"
+              target="_blank">
+              API-Movies Info </a></span>
+        </p>
+        <p>
+          Wallpaper from <a class="link link_footer-login"
+            href="https://www.pexels.com/photo/abstract-analog-art-camera-390089/" target="_blank">Pexels®</a>
+          by <a class="link link_footer-login" href="https://www.pexels.com/@skitterphoto"
+            target="_blank">skitterphoto</a>
+        </p>
+      </footer>
 
-        <form class="search" id="search_form">
-
-          <div class="item_container">
-            <h3 class="item_title">Find info about your favorite movie!</h3>
-          </div>
-
-          <div class="item_container item_search">
-            <label class="label" for="title">Movie title</label>
-            <input class="input" type="text" name="title" id="title">
-          </div>
-
-          <div class="item_container btn_container">
-            <button class="btn" id="btn_find">Search!</button>
-            <button class="btn" id="btn_reset">Clear Screen</button>
-          </div>
-
-        </form>
-      </div>
-
-      <section class="results_container">
-
-        <div class="preview_container" id="parent_container">
-        </div>
-
-      </section>
-
-      <section class="detail_container">
-
-      </section>
-
-      <section class="favorites">
-        <div class="favorites_container">
-
-
-        </div>
-
-        <h3 class="empty_favorites">Favorites is empty</h3>
-
-      </section>
-
-    </main>
-    <footer class="footer">
-      <span class="span_footer" id="leyend_footer">Gus Ramírez, 2020 <sup>&copy;</sup></span>
-    </footer>
+    </div>
   </body>
 
 </html>

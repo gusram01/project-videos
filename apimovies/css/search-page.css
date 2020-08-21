@@ -10,10 +10,15 @@
 
 .preview_container{
   display: grid;
+  grid-template-columns:repeat(auto-fit, minmax(250px, 305px));
+  grid-gap: 1rem;
+  min-height: fit-content;
+  width: 96%;
+  /* display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 1rem;
   place-items: center;
-  padding-bottom: 2rem;
+  padding-bottom: 2rem; */
 }
 
 .movie_container{

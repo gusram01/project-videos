@@ -1,6 +1,6 @@
-import { validateUser } from "./users";
+import { validateUser, actualUser } from "./users";
 import { uriMovies } from "./apimovies";
-import { processMoviesPreview, favoritesStore, renderFavoritesStorage } from './movies';
+import { processMoviesPreview, renderFavoritesStorage } from './movies';
 import { responseOmdb } from "../interfaces/User-Movies";
 
 const previewMovieContainer = document.getElementById('parent_container') as HTMLDivElement;
@@ -13,11 +13,11 @@ const favoritesContainer = document.querySelector('.favorites_container') as HTM
  */
 
 const backgroundInput = (input: HTMLInputElement, customProperty: string) => {
-  return input.style.setProperty('background', `var(${customProperty})`);
+  return input.style.setProperty('--background', `var(${customProperty})`);
 }
 
 const singleInputValidation = (input: HTMLInputElement) => {
-  if (input.value.length > 0) {
+  if (input.value.trim().length > 0) {
     backgroundInput(input, '--bg4')
     return true;
   } else {
@@ -89,7 +89,6 @@ const goSearch = async (title: string, page: number = 1) => {
 
 }
 
-
 /**
  * ==========================================
  *  Export functions - Principal Connection
@@ -101,11 +100,11 @@ export const clearSearch = () => {
   favoritesContainer.innerHTML = '';
 }
 
-export const validateFavorites = (eventTarget: HTMLElement) => {
-  const favorites = favoritesStore();
-  (favorites!.length > 0)
-    ? renderFavoritesStorage(favorites!)
-    : emptyFavorites();
+export const validateFavorites = () => {
+  const info = actualUser();
+  (!info)
+    ? emptyFavorites()
+    : renderFavoritesStorage(info.user.data.favorites!);
 }
 
 export const validateInputLogin = (userInput: HTMLInputElement, passInput: HTMLInputElement) => {
@@ -117,8 +116,8 @@ export const validateInputLogin = (userInput: HTMLInputElement, passInput: HTMLI
 }
 
 export const validateInputSearch = async (searchInput: HTMLInputElement) => {
-  (searchInput.value.trim().length > 0)
-    ? (clearSearch()
-      , await goSearch(searchInput.value))
-    : singleInputValidation(searchInput);
+  if (singleInputValidation(searchInput)) {
+    clearSearch();
+    return await goSearch(searchInput.value);
+  }
 }

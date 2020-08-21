@@ -18,17 +18,13 @@
   width: fit-content;
   padding: 1rem;
   text-align: center;
-  background: var(--bg1-transparent1);
-  box-shadow: 0 0 1px var(--shadow-l1);
-}
-
-.continue_container:hover{
-  box-shadow: 1px 1px 1px var(--shadow-l1);
+  max-width: 300px;
+  background: var(--bg-nav);
 }
 
 .preview_home{
   display: grid;
-  grid-template-columns: minmax(280px, 444px);
+  grid-template-columns: minmax(250px, 305px);
   justify-content: space-evenly;
   align-items: center;
   min-height: fit-content;
@@ -55,6 +51,7 @@
 }
 
 .board_title{
+  flex-direction: column;
   height: 60%;
   padding: 15% 5%;
   align-items: center;

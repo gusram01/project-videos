@@ -12,11 +12,10 @@ const detailContainer = document.querySelector('.detail_container') as HTMLDivEl
 const listenDetailContainer = (ev: MouseEvent) => {
   const element = ev.target as HTMLElement;
   const idForClose = element.dataset.close;
-  const principalNode = element.parentElement!.parentElement!.parentElement as HTMLElement;
 
   (!!idForClose)
-    ? (principalNode.classList.toggle('after')
-      , principalNode.firstElementChild!.remove())
+    ? (detailContainer.classList.toggle('after')
+      , detailContainer.firstElementChild!.remove())
     : false;
 }
 
@@ -58,10 +57,12 @@ const listenPreviewMovieContainer = (ev: MouseEvent) => {
   const idDetail = element.dataset.details;
 
   if (!!idMovie) {
+    console.log(idMovie);
     element.classList.toggle('fav');
     checkFavorites(idMovie)
   }
   if (!!idDetail) {
+    ev.preventDefault();
     renderDetail(idDetail.substring(1))
   }
 }
@@ -72,12 +73,6 @@ const listenPreviewMovieContainer = (ev: MouseEvent) => {
  * ==========================================
  */
 
-export const favoritesStore = () => {
-  const data = actualUser();
-  if (!data) return;
-  const { user } = data;
-  return user.data.favorites;
-}
 
 export const renderFavoritesStorage = (favoritesStore: Movie[]) => {
   const fragment = favorites(favoritesStore);
@@ -86,8 +81,11 @@ export const renderFavoritesStorage = (favoritesStore: Movie[]) => {
 }
 
 export const processMoviesPreview = (movies: Movie[]) => {
+  const info = actualUser();
   //@ts-expect-error
-  const idsFavsStorage = favoritesStore()!.map<string>(mov => mov.imdbID);
+  const favorites = info.user.data.favorites;
+  //@ts-expect-error
+  const idsFavsStorage = favorites.map<string>(mov => mov.imdbID);
   const fragment = moviesPreview(movies, idsFavsStorage);
   previewMovieContainer.appendChild(fragment.cloneNode(true));
   previewMovieContainer.addEventListener('click', listenPreviewMovieContainer);

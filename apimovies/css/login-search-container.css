@@ -8,9 +8,9 @@
 
  .body_search{
   background: no-repeat fixed 
-    url("../../assets/img/search.jpg"), var(--bg1);
+    url("../../assets/img/favorites.jpg"), var(--bg1);
   background-position: 50% 5%;
-  background-size: auto;
+  background-size: 100%;
 }
 
 .header_search{
