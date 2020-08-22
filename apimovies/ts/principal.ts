@@ -14,12 +14,12 @@ const login = (ev: Event) => {
 }
 
 const search = (ev: Event) => {
-  ev.preventDefault();
-  const form = ev.target as HTMLFormElement
-  const title = form.querySelector('.title') as HTMLInputElement;
-
+  const title = document.getElementById('title') as HTMLInputElement;
   //@ts-expect-error
   const element = ev.submitter as HTMLElement;
+
+  ev.preventDefault();
+
   (element.id === 'btn_reset')
     ? (clearSearch()
       , title.value = '')

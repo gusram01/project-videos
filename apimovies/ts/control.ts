@@ -67,7 +67,7 @@ const processResponseOmdb = (data: responseOmdb) => {
 
 const goFwd = (user: string, pass: string) => {
   validateUser(user, pass);
-  location.assign('/apimovies/search');
+  location.assign('/apimovies/search/');
 }
 
 const goSearch = async (title: string, page: number = 1) => {
