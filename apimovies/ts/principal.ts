@@ -49,11 +49,16 @@ const redirectHome = () => {
  * ==========================================
  */
 
-export const actualPath = (ev: Event) => {
-  (location.pathname === '/apimovies/' || location.pathname === '/apimovies')
-    ? (sessionStorage.clear()
-      , loginForm.addEventListener('submit', login))
-    : (redirectHome()
-      , searchForm.addEventListener('submit', search));
+
+// check implementation on movil
+// crash on search page
+export const actualPath = () => {
   body.addEventListener('click', butttons);
+  if (location.pathname === '/apimovies/' || location.pathname === '/apimovies') {
+    sessionStorage.clear();
+    loginForm.addEventListener('submit', login);
+  } else {
+    redirectHome();
+    searchForm.addEventListener('submit', search);
+  }
 };
