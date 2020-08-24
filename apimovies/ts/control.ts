@@ -3,6 +3,7 @@ import { uriMovies } from "./apimovies";
 import { processMoviesPreview, renderFavoritesStorage } from './movies';
 import { responseOmdb } from "../interfaces/User-Movies";
 
+
 const previewMovieContainer = document.getElementById('parent_container') as HTMLDivElement;
 const favoritesContainer = document.querySelector('.favorites_container') as HTMLDivElement;
 
@@ -40,8 +41,8 @@ const emptyFavorites = () => {
   }, 900);
 }
 
-const setObserver = (cb: IntersectionObserverCallback) => {
-  let observer = new IntersectionObserver(cb);
+const setObserver = (callback: IntersectionObserverCallback) => {
+  const observer = new IntersectionObserver(callback);
   observer.observe(previewMovieContainer.lastElementChild!);
 };
 
@@ -70,11 +71,11 @@ const goFwd = (user: string, pass: string) => {
   location.assign('/apimovies/search/');
 }
 
-const goSearch = async (title: string, page: number = 1) => {
+const goSearch = async (title: string, page = 1) => {
   const data = await uriMovies.findByTitle(title, page);
   const pagesResult = processResponseOmdb(data);
 
-  if (isNaN(pagesResult) || page > pagesResult) {
+  if (Number.isNaN(pagesResult) || page > pagesResult) {
     console.log('no more results');
   } else {
     setObserver((entries, observer) => {

@@ -6,11 +6,11 @@ const apiKey = '53c8dc8f';
 const getter = (dominio: string, apikey: string) => {
   const endpoint = `${dominio}/?apikey=${apikey}`;
   return ({
-    findByTitle: async (title: string, page: number = 1): Promise<responseOmdb> => {
-      return await (await fetch(`${endpoint}&s=${title}&page=${page}`)).json();
+    findByTitle: async (title: string, page = 1) => {
+      return await (await fetch(`${endpoint}&s=${title}&page=${page}`)).json() as Promise<responseOmdb>;
     },
-    findById: async (id: string): Promise<Movie> => {
-      return await (await fetch(`${endpoint}&i=${id}`)).json()
+    findById: async (id: string) => {
+      return await (await fetch(`${endpoint}&i=${id}`)).json() as Promise<Movie>;
     }
   })
 }
