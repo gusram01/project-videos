@@ -75,11 +75,11 @@
 
 .nav{
   margin: 0;
-  position: -webkit-sticky;
   position: sticky;
   top: 93%;
   height: 60px;
   background: var(--bg-nav);
+  z-index: 200;
 }
 
 .nav_container{
