@@ -42,14 +42,12 @@
 }
 
 .link:hover,
-.btn:hover,
 .modal_close:hover{
   color: var(--linkActive); 
   font-weight: bold; 
 }
 
 .link::after,
-.btn::after,
 .link::after{
   position: absolute;
   content: '';
@@ -78,13 +76,12 @@
 }
 
 .link:active,
-.btn:active,
 .modal_close:active{
   color: var(--font-nav);
 }
 
 .label{
-  margin: 0 10px 
+  margin: 0 10px;
 }
 
 .input{
@@ -95,12 +92,50 @@
   transition: background 200ms ease-in-out;
 }
 
-.btn{
-  min-width: 5rem;
+.title{
+  --background: var(--bg3);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 1rem 4rem 0.5rem 0.7rem;
+  background: transparent;
+  outline: none;
+  border: none;
+  border-radius: 100px;
+  background: var(--background);
+}
+
+.label{
+  position: absolute;
+  left: 15px;
+  font-size: 0.9rem;
+  color: var(--bg1-transparent2);
+}
+
+.btn,
+.btn:active{
   padding: 0.5rem 1rem;
   user-select: none;
   cursor: pointer;
   outline: none;
+  border: none;
+  background: transparent;
+  color: var(--linkActive);
+}
+.btn:hover{
+  color: var(--font3);
+}
+.btn_search{
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  height: calc(var(--size)*1px);
+  width: calc(var(--size)*1px);
+  background: transparent;
+  border: none;
 }
 
 .more{
@@ -115,7 +150,7 @@
 }
 
 .fav{
-  color: var(--error1);
+  color: var(--error0);
 }
 
 .item_container{
@@ -129,3 +164,4 @@
   top: 5%;
   font-size: 2.2rem;
 }
+

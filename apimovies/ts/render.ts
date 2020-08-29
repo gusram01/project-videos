@@ -10,7 +10,7 @@ export const moviesPreview = (movies: Movie[], idsFavStorage: string[]) => {
       ? 'fav'
       : '';
 
-    if (movie.Poster === 'N/A') movie.Poster = '/assets/no-image.jpg';
+    if (movie.Poster === 'N/A') movie.Poster = '/assets/img/no-image.jpg';
 
     div.className = 'board';
 
@@ -87,7 +87,7 @@ export const favorites = (favoritesStore: Movie[]) => {
     div.innerHTML = `
               <div class="card_favorite">
 
-                <button class="btn fav_close" data-close="${fav.imdbID}">&times;</button>
+                <a href="#" class="modal_close fav_close" data-close="${fav.imdbID}">&times;</a href="#">
 
                 <div class="image_fav">
                   <img src="${fav.Poster}" alt="${fav.Title}" />

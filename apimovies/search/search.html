@@ -11,12 +11,21 @@
     <script src="https://kit.fontawesome.com/cfe24ae6ca.js" crossorigin="anonymous"></script>
   </head>
 
-  <body class="body body_search">
+  <body class="body">
     <div class="body_search">
       <header class="header_search">
 
-        <nav class="nav">
-          <ul class="nav_search">
+        <form class="form_search" id="search_form">
+          <input class="title" type="text" name="title" id="title" aria-label="search" placeholder="Enter your search">
+          <label class="label" for="title" aria-label="search">Search movie</label>
+          <button class="btn btn_search" id="btn_find"><i class="fas fa-search"></i></button>
+        </form>
+
+        <nav class="nav_search">
+          <ul class="nav_container">
+            <li class="li_link">
+              <a href="#" class="link" id="btn_reset">Clear Screen</a>
+            </li>
             <li class="li_link">
               <a class="link" href="#" id="btn_favorites">Favorites</a>
             </li>
@@ -25,29 +34,10 @@
             </li>
           </ul>
         </nav>
+
       </header>
 
       <main class="main search">
-        <div class="search_container">
-
-          <form class="search" id="search_form">
-
-            <div class="item_container">
-              <h3 class="item_title">Find info about your favorite movie!</h3>
-            </div>
-
-            <div class="item_container item_search">
-              <label class="label" for="title">Movie title</label>
-              <input class="input title" type="text" name="title" id="title">
-            </div>
-
-            <div class="item_container btn_container">
-              <button class="btn" id="btn_find">Search!</button>
-              <button class="btn" id="btn_reset">Clear Screen</button>
-            </div>
-
-          </form>
-        </div>
 
         <section class="results_container">
 
@@ -73,7 +63,7 @@
       </main>
 
 
-      <nav class="nav">
+      <nav class="nav nav_footer">
         <ul class="nav_container">
           <li class="li_link">
             <a href="/apimovies" class="link link_nav">Home</a>

@@ -2,6 +2,7 @@ import { validateInputLogin, validateInputSearch, clearSearch, validateFavorites
 
 const loginForm = document.getElementById('login_form') as HTMLFormElement;
 const searchForm = document.getElementById('search_form') as HTMLFormElement;
+const title = document.getElementById('title') as HTMLInputElement;
 const body = document.querySelector('.body') as HTMLBodyElement;
 
 const login = (ev: Event) => {
@@ -14,27 +15,44 @@ const login = (ev: Event) => {
 }
 
 const search = (ev: Event) => {
-  const title = document.getElementById('title') as HTMLInputElement;
-  //@ts-expect-error
-  const element = ev.submitter as HTMLElement;
-
   ev.preventDefault();
-
-  (element.id === 'btn_reset')
-    ? (clearSearch()
-      , title.value = '')
-    : validateInputSearch(title);
+  validateInputSearch(title);
 }
 
 const butttons = (ev: Event) => {
   const loginContainer = document.getElementById('login-container') as HTMLDivElement;
-  const element = ev.target as HTMLElement
-  if (element.id === 'btn_close') return sessionStorage.clear();
-  if (element.id === 'btn_favorites') return validateFavorites();
-  if (element.id === 'login_continue') return loginContainer.classList.toggle('after');
-  if (element.id === 'login-container') return loginContainer.classList.toggle('after');
-  if (element.id === 'close-login') return loginContainer.classList.toggle('after');
-  if (element.matches('.modal_close')) return ev.preventDefault();
+  const element = ev.target as HTMLElement;
+
+
+  if (element.id === 'btn_close') {
+    return sessionStorage.clear();
+  }
+  if (element.id === 'btn_favorites') {
+    return validateFavorites();
+  }
+  if (element.id === 'login_continue') {
+    return loginContainer.classList.toggle('after');
+  }
+  if (element.id === 'login-container') {
+    return loginContainer.classList.toggle('after');
+  }
+  if (element.id === 'close-login') {
+    return loginContainer.classList.toggle('after');
+  }
+  if (element.id === 'btn_reset') {
+    clearSearch();
+    return title.value = '';
+  }
+  if (element.matches('.heart_login')) {
+    return element.firstElementChild!.classList.toggle('fav');
+  }
+  if (element.matches('.more')) {
+    return loginContainer.classList.toggle('after');
+  }
+  if (element.matches('.modal_close')) {
+    return ev.preventDefault();
+  }
+
 }
 
 const redirectHome = () => {
@@ -49,16 +67,11 @@ const redirectHome = () => {
  * ==========================================
  */
 
-
-// check implementation on movil
-// crash on search page
 export const actualPath = () => {
   body.addEventListener('click', butttons);
-  if (location.pathname === '/apimovies/' || location.pathname === '/apimovies') {
-    sessionStorage.clear();
-    loginForm.addEventListener('submit', login);
-  } else {
-    redirectHome();
-    searchForm.addEventListener('submit', search);
-  }
+  (location.pathname === '/apimovies/' || location.pathname === '/apimovies')
+    ? (sessionStorage.clear()
+      , loginForm.addEventListener('submit', login))
+    : (redirectHome()
+      , searchForm.addEventListener('submit', search));
 };
