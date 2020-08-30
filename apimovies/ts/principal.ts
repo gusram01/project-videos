@@ -1,9 +1,12 @@
-import { validateInputLogin, validateInputSearch, clearSearch, validateFavorites } from './control';
+import { validateInputLogin, validateInputSearch } from './control';
 
-const loginForm = document.getElementById('login_form') as HTMLFormElement;
-const searchForm = document.getElementById('search_form') as HTMLFormElement;
-const title = document.getElementById('title') as HTMLInputElement;
-const body = document.querySelector('.body') as HTMLBodyElement;
+
+/**
+ * ==========================================
+ *            Secondary Functions
+ * ==========================================
+ */
+
 
 const login = (ev: Event) => {
   ev.preventDefault();
@@ -15,44 +18,11 @@ const login = (ev: Event) => {
 }
 
 const search = (ev: Event) => {
+  const title = document.getElementById('title') as HTMLInputElement;
+
   ev.preventDefault();
+  window.scrollTo(0, 0);
   validateInputSearch(title);
-}
-
-const butttons = (ev: Event) => {
-  const loginContainer = document.getElementById('login-container') as HTMLDivElement;
-  const element = ev.target as HTMLElement;
-
-
-  if (element.id === 'btn_close') {
-    return sessionStorage.clear();
-  }
-  if (element.id === 'btn_favorites') {
-    return validateFavorites();
-  }
-  if (element.id === 'login_continue') {
-    return loginContainer.classList.toggle('after');
-  }
-  if (element.id === 'login-container') {
-    return loginContainer.classList.toggle('after');
-  }
-  if (element.id === 'close-login') {
-    return loginContainer.classList.toggle('after');
-  }
-  if (element.id === 'btn_reset') {
-    clearSearch();
-    return title.value = '';
-  }
-  if (element.matches('.heart_login')) {
-    return element.firstElementChild!.classList.toggle('fav');
-  }
-  if (element.matches('.more')) {
-    return loginContainer.classList.toggle('after');
-  }
-  if (element.matches('.modal_close')) {
-    return ev.preventDefault();
-  }
-
 }
 
 const redirectHome = () => {
@@ -68,7 +38,9 @@ const redirectHome = () => {
  */
 
 export const actualPath = () => {
-  body.addEventListener('click', butttons);
+  const loginForm = document.getElementById('login_form') as HTMLFormElement;
+  const searchForm = document.getElementById('search_form') as HTMLFormElement;
+
   (location.pathname === '/apimovies/' || location.pathname === '/apimovies')
     ? (sessionStorage.clear()
       , loginForm.addEventListener('submit', login))

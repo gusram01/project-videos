@@ -131,10 +131,12 @@
   position: absolute;
   top: 0;
   right: 0;
+  margin: 2px 2px;
   border-radius: 50%;
-  height: calc(var(--size)*1px);
-  width: calc(var(--size)*1px);
-  background: transparent;
+  height: calc((var(--size) - 4)*1px);
+  width: calc((var(--size) - 4)*1px);
+  background: var(--bg1-transparent2);
+  color: var(--font1);
   border: none;
 }
 

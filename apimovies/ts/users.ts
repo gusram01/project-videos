@@ -38,7 +38,7 @@ export const actualUser = () => {
 }
 
 
-export const validateUser = (user: string, password: string, favorites: Array<Movie> = []) => {
+export const createNewUser = (user: string, password: string, favorites: Array<Movie> = []) => {
   const newUser = {
     _id: user + password,
     data: {

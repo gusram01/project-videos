@@ -1,11 +1,35 @@
-import { validateUser, actualUser } from "./users";
+import { createNewUser, actualUser } from "./users";
 import { uriMovies } from "./apimovies";
-import { processMoviesPreview, renderFavoritesStorage } from './movies';
+import { Movie } from '../interfaces/User-Movies';
 import { responseOmdb } from "../interfaces/User-Movies";
+import { moviesPreview, favorites } from './render';
 
 
 const previewMovieContainer = document.getElementById('parent_container') as HTMLDivElement;
 const favoritesContainer = document.querySelector('.favorites_container') as HTMLDivElement;
+
+/**
+ * ==========================================
+ *                  Utilities
+ * ==========================================
+ */
+
+const renderFavoritesStorage = (favoritesStore: Movie[]) => {
+  const fragment = favorites(favoritesStore);
+  clearSearch();
+  favoritesContainer.appendChild(fragment.cloneNode(true));
+}
+
+const processMoviesPreview = (movies: Movie[]) => {
+  const info = actualUser();
+  //@ts-expect-error
+  const favorites = info.user.data.favorites;
+  //@ts-expect-error
+  const idsFavsStorage = favorites.map<string>(mov => mov.imdbID);
+  const fragment = moviesPreview(movies, idsFavsStorage);
+  previewMovieContainer.appendChild(fragment.cloneNode(true));
+}
+
 
 /**
  * ==========================================
@@ -26,19 +50,6 @@ const singleInputValidation = (input: HTMLInputElement) => {
     setTimeout(() => { backgroundInput(input, '--bg3') }, 600);
     return false;
   }
-}
-
-const emptyFavorites = () => {
-  const search = document.getElementById('search_form') as HTMLFormElement;
-  const h3 = favoritesContainer.nextElementSibling as HTMLElement;
-  previewMovieContainer.innerHTML = '';
-  h3.classList.toggle('after');
-  search.classList.toggle('after');
-
-  setTimeout(() => {
-    h3.classList.toggle('after');
-    search.classList.toggle('after');
-  }, 900);
 }
 
 const setObserver = (callback: IntersectionObserverCallback) => {
@@ -67,7 +78,7 @@ const processResponseOmdb = (data: responseOmdb) => {
 };
 
 const goFwd = (user: string, pass: string) => {
-  validateUser(user, pass);
+  createNewUser(user, pass);
   location.assign('/apimovies/search/');
 }
 
@@ -103,8 +114,8 @@ export const clearSearch = () => {
 
 export const validateFavorites = () => {
   const info = actualUser();
-  (!info)
-    ? emptyFavorites()
+  (!info || info.user.data.favorites?.length === 0)
+    ? console.log('fav is empty')
     : renderFavoritesStorage(info.user.data.favorites!);
 }
 

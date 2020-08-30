@@ -42,38 +42,33 @@ export const movieDetail = (movie: Movie) => {
   const div: HTMLDivElement = document.createElement('div');
   if (movie.Poster === 'N/A') movie.Poster = '/assets/no-image.jpg';
 
-  div.className = 'card_movie';
-  div.innerHTML = `
-      <div class="details_movie">
-        <a href="#" class="modal_close" data-close="${movie.imdbID}">&times;</a>
-        <div class="image_detail_container">
-          <img src="${movie.Poster}" alt="${movie.Title}" />
-          <div class="rating"><span>imdbRating: ${movie.imdbRating}</span></div>
-        </div>
-
-        <div class="movie_details_container">
-          <div class="movie_title">
-            <h2>${movie.Title}</h2>
-          </div>
-
-          <div class="movie_min_details">
-            <span>${movie.Country};</span>
-            <span>${movie.Year};</span>
-            <span>${movie.Director}.</span>
-          </div>
-
-          <div class="movie_description">
-            <p>${movie.Plot}</p>
-          </div>
-
-          <div class="movie_actors">
-            <h5><small>${movie.Actors}</small></h5>
-          </div>
-
-        </div>
-
-      </div>
-  `;
+  div.className = 'details_movie';
+  div.innerHTML = `<a href="#" class="modal_close" data-close="${movie.imdbID}">&times;</a>
+                   <div class="image_detail_container">
+                     <img src="${movie.Poster}" alt="${movie.Title}" />
+                     <div class="rating"><span>imdbRating: ${movie.imdbRating}</span></div>
+                   </div>
+ 
+                   <div class="movie_details_container">
+                     <div class="movie_title">
+                       <h2>${movie.Title}</h2>
+                     </div>
+ 
+                     <div class="movie_min_details">
+                       <span>${movie.Country};</span>
+                       <span>${movie.Year};</span>
+                       <span>${movie.Director}.</span>
+                     </div>
+ 
+                     <div class="movie_description">
+                       <p>${movie.Plot}</p>
+                     </div>
+ 
+                     <div class="movie_actors">
+                       <h5><small>${movie.Actors}</small></h5>
+                     </div>
+ 
+                   </div>`;
   fragment.appendChild(div);
   return fragment;
 }

@@ -9,7 +9,9 @@ import '../../assets/img/search.jpg';
 import '../../assets/img/favorites.jpg';
 import { actualPath } from './principal';
 import { navEffect } from './nav';
+import { butttons } from './listener';
 
+const body = document.querySelector('.body') as HTMLBodyElement;
 const spanFooter = document.getElementById('leyend_footer') as HTMLElement;
 const actualdate = new Date().getFullYear();
 
@@ -19,4 +21,5 @@ spanFooter.style.fontWeight = '600';
 
 window.addEventListener('load', actualPath);
 window.addEventListener('scroll', navEffect);
+body.addEventListener('click', butttons);
 

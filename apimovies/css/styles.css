@@ -17,7 +17,10 @@
   --bg-nav: #000;
   --font-nav:#aaf255;
 
-  --shadow-l1: #fff6;
+  --bg-modal: rgba(255,255,255,0.5);
+
+  --shadow-l1: #000000dd;
+  --shadow-l2: #00000039;
 
 
   --bg-claq1-d: #132026;
@@ -35,7 +38,7 @@
   --linkHover: #8ae4e6;
 
   --board-height: 350;
-
+  
 }
 
 *{ 

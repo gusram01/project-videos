@@ -107,14 +107,14 @@
   height: 100%;
   opacity: 0;
   transform: scale(0, 0);
-  background: var(--shadow-l1);
-  transition: transform 200ms ease, opacity 200ms ease;
+  background: var(--bg-modal);
   z-index: 200;
 }
 
 .login_container.after{
   opacity: 1;
   transform: scale(1, 1);
+  transition: transform 200ms ease, opacity 200ms ease;
 }
 
 .form_login{
@@ -125,6 +125,6 @@
   height: 60%;
   border-radius: 6px;
   background: var(--bg1-transparent1);
-  box-shadow: 2px 2px 2px var(--shadow-l1),
-            -2px -2px 2px var(--shadow-l1);
+  box-shadow: 2px 5px 8px var(--shadow-l1),
+              2px 7px 20px var(--shadow-l2);
 }
