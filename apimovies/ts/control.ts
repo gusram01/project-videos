@@ -6,7 +6,8 @@ import { moviesPreview, favorites } from './render';
 
 
 const previewMovieContainer = document.getElementById('parent_container') as HTMLDivElement;
-const favoritesContainer = document.querySelector('.favorites_container') as HTMLDivElement;
+const favoritesContainer = document.querySelector('.favorites_container') as HTMLElement;
+const emptyFavorites = document.querySelector('.empty_favorites') as HTMLElement;
 
 /**
  * ==========================================
@@ -21,21 +22,9 @@ const renderFavoritesStorage = (favoritesStore: Movie[]) => {
 }
 
 const processMoviesPreview = (movies: Movie[]) => {
-  const info = actualUser();
-  //@ts-expect-error
-  const favorites = info.user.data.favorites;
-  //@ts-expect-error
-  const idsFavsStorage = favorites.map<string>(mov => mov.imdbID);
-  const fragment = moviesPreview(movies, idsFavsStorage);
+  const fragment = moviesPreview(movies);
   previewMovieContainer.appendChild(fragment.cloneNode(true));
 }
-
-
-/**
- * ==========================================
- *         Second front - Main process
- * ==========================================
- */
 
 const backgroundInput = (input: HTMLInputElement, customProperty: string) => {
   return input.style.setProperty('--background', `var(${customProperty})`);
@@ -55,7 +44,7 @@ const singleInputValidation = (input: HTMLInputElement) => {
 const setObserver = (callback: IntersectionObserverCallback) => {
   const observer = new IntersectionObserver(callback);
   observer.observe(previewMovieContainer.lastElementChild!);
-};
+}
 
 const emptyMovies = () => {
   return [{
@@ -65,6 +54,12 @@ const emptyMovies = () => {
     Poster: "Not found"
   }];
 }
+
+/**
+ * ==========================================
+ *         Second front - Main process
+ * ==========================================
+ */
 
 const processResponseOmdb = (data: responseOmdb) => {
   const ok = JSON.parse(data.Response.toLowerCase());
@@ -110,12 +105,14 @@ const goSearch = async (title: string, page = 1) => {
 export const clearSearch = () => {
   previewMovieContainer.innerHTML = '';
   favoritesContainer.innerHTML = '';
+
 }
 
 export const validateFavorites = () => {
   const info = actualUser();
   (!info || info.user.data.favorites?.length === 0)
-    ? console.log('fav is empty')
+    ? (clearSearch()
+      , emptyFavorites.classList.toggle('after'))
     : renderFavoritesStorage(info.user.data.favorites!);
 }
 

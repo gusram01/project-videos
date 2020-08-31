@@ -29,8 +29,15 @@ export interface Movie {
   Country?: string;
   Poster?: string;
   imdbRating?: string;
+  imdbVotes?: string;
   Production?: string;
   Response?: string;
   Type?: string;
+  Awards?: string;
+  BoxOffice?: string;
+  DVD?: string;
+  Metascore?: string;
+  Runtime?: string;
+  Website?: string;
 
 }

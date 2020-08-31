@@ -11,7 +11,7 @@ import { clearSearch, validateFavorites } from './control';
 
 const checkFavorites = async (idMovie: string) => {
   const infoUsers = actualUser();
-  if (!infoUsers) return;
+  if (!infoUsers) { return };
   const { user, array, indexUser } = infoUsers;
   const indexMovie = user.data.favorites!.findIndex(m => m.imdbID === idMovie);
 
@@ -37,10 +37,12 @@ const checkFavorites = async (idMovie: string) => {
 export const butttons = (ev: Event) => {
   const loginContainer = document.getElementById('login-container') as HTMLDivElement;
   const detailContainer = document.querySelector('.detail_container') as HTMLDivElement;
+  const emptyFavorites = document.querySelector('.empty_favorites') as HTMLElement;
   const element = ev.target as HTMLElement;
   const idForClose = element.dataset.close;
   const idMovie = element.dataset.fav;
   const idDetail = element.dataset.details;
+  const idDestroy = element.dataset.destroy;
 
 
   if (!!idDetail) {
@@ -55,11 +57,15 @@ export const butttons = (ev: Event) => {
   }
   if (!!idMovie) {
     element.classList.toggle('fav');
-    checkFavorites(idMovie)
+    return checkFavorites(idMovie);
   }
   if (!!idForClose) {
     detailContainer.classList.toggle('after');
-    detailContainer.firstElementChild!.remove();
+    return detailContainer.firstElementChild!.remove();
+  }
+  if (!!idDestroy) {
+    checkFavorites(idDestroy.substring(3));
+    return validateFavorites();
   }
 
   if (element.id === 'btn_close') {
@@ -99,6 +105,9 @@ export const butttons = (ev: Event) => {
     if (element.id === 'close-login') {
       return loginContainer.classList.toggle('after');
     }
+  }
+  if (element.matches('.empty_favorites')) {
+    return emptyFavorites.classList.toggle('after');
   }
 
 }
