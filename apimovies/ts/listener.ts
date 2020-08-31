@@ -59,10 +59,7 @@ export const butttons = (ev: Event) => {
     element.classList.toggle('fav');
     return checkFavorites(idMovie);
   }
-  if (!!idForClose) {
-    detailContainer.classList.toggle('after');
-    return detailContainer.firstElementChild!.remove();
-  }
+
   if (!!idDestroy) {
     checkFavorites(idDestroy.substring(3));
     return validateFavorites();
@@ -73,6 +70,7 @@ export const butttons = (ev: Event) => {
   }
   if (element.id === 'btn_favorites') {
     ev.preventDefault();
+    window.scroll(0, 0);
     return validateFavorites();
   }
   if (element.id === 'login_continue') {
@@ -104,6 +102,10 @@ export const butttons = (ev: Event) => {
     ev.preventDefault();
     if (element.id === 'close-login') {
       return loginContainer.classList.toggle('after');
+    }
+    if (!!idForClose) {
+      detailContainer.classList.toggle('after');
+      return detailContainer.firstElementChild!.remove();
     }
   }
   if (element.matches('.empty_favorites')) {

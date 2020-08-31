@@ -99,7 +99,7 @@ export const favorites = (favoritesStore: Movie[]) => {
       ? 'fav'
       : '';
 
-    div.className = 'details_movie';
+    div.className = 'details_fav';
     div.innerHTML = `<div class="image_wrapper">
                       <img src="${fav.Poster}" alt="${fav.Title}" />
                       <button class="btn ${favIcon}" data-destroy="del${fav.imdbID}"><i class="fas fa-heart favicon"></i></button>

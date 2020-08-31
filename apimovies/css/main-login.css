@@ -44,27 +44,24 @@
 .board_title,
 .board_body{
   display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
   width: 100%;
-  background: var(--bg1);
   opacity: 0;
+  background: var(--bg1);
   transition: opacity 300ms ease, transform 300ms ease;
 }
 
 .board_title{
-  flex-direction: column;
   height: 60%;
   padding: 15% 5%;
-  align-items: center;
-  justify-content: space-evenly;
   text-align: center;
   transform: translateX(-100%);
 }
 .board_body{
   height: 40%;
   padding: 5%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
   transform: translateX(100%);
 }
 
@@ -122,6 +119,7 @@
   display: grid;
   place-items: center;
   width: 80%;
+  max-width: 800px;
   height: 60%;
   border-radius: 6px;
   background: var(--bg1-transparent1);

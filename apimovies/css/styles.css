@@ -10,9 +10,8 @@
   --bg1-transparent2: #00000469;
   --bg2: #1f4172;
   --bg2-transparent: #1f4172aa;
-  --bg3:var(--font2);
+  --bg3:#fad1ab;
   --bg4: #acd5d6;
-  --bg5:#d2d2d2;
 
   --bg-nav: #000;
   --font-nav:#aaf255;
@@ -22,18 +21,11 @@
   --shadow-l1: #000000dd;
   --shadow-l2: #00000039;
 
-
-  --bg-claq1-d: #132026;
-
-
   --font0:#000008;
   --font1:#ecb460;
-  --font2:#fad1ab;
   --font3:#aaf255;
-  --font4: #ecf1f1;
   --error0: #f03655;
   --error1: #d88291;
-  --error2: #febbbb;
   --linkActive: #BB86FC;
   --linkHover: #8ae4e6;
 
@@ -84,6 +76,7 @@ html{
   margin: 0;
   bottom: 0;
   height: 40px;
+  max-width: 1368px;
   background: var(--bg-nav);
   transform: translateY(var(--moveNY));
   transition: transform 100ms ease;
