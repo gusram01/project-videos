@@ -1,4 +1,27 @@
-import { validateInputLogin, validateInputSearch } from './control';
+import { clearSearch, goFwd, goSearch } from './control';
+
+
+/**
+ * ==========================================
+ *                  Utilities
+ * ==========================================
+ */
+
+
+const backgroundInput = (input: HTMLInputElement, customProperty: string) => {
+  return input.style.setProperty('--background', `var(${customProperty})`);
+}
+
+const singleInputValidation = (input: HTMLInputElement) => {
+  if (input.value.trim().length > 0) {
+    backgroundInput(input, '--bg4')
+    return true;
+  } else {
+    backgroundInput(input, '--error1');
+    setTimeout(() => { backgroundInput(input, '--bg3') }, 600);
+    return false;
+  }
+}
 
 
 /**
@@ -9,26 +32,26 @@ import { validateInputLogin, validateInputSearch } from './control';
 
 
 const login = (ev: Event) => {
-  ev.preventDefault();
   const form = ev.target as HTMLFormElement
   const user = form.querySelector('.user') as HTMLInputElement;
   const password = form.querySelector('.password') as HTMLInputElement;
 
-  validateInputLogin(user, password);
+  ev.preventDefault();
+  if (singleInputValidation(user) &&
+    singleInputValidation(password)) {
+    return goFwd(user.value, password.value);
+  }
 }
 
-const search = (ev: Event) => {
+const search = async (ev: Event) => {
   const title = document.getElementById('title') as HTMLInputElement;
 
   ev.preventDefault();
   window.scrollTo(0, 0);
-  validateInputSearch(title);
-}
-
-const redirectHome = () => {
-  (sessionStorage.length === 0)
-    ? location.assign('/apimovies')
-    : true;
+  if (singleInputValidation(title)) {
+    clearSearch();
+    return await goSearch(title.value);
+  }
 }
 
 /**
@@ -44,6 +67,7 @@ export const actualPath = () => {
   (location.pathname === '/apimovies/' || location.pathname === '/apimovies')
     ? (sessionStorage.clear()
       , loginForm.addEventListener('submit', login))
-    : (redirectHome()
-      , searchForm.addEventListener('submit', search));
+    : (sessionStorage.length === 0)
+      ? location.assign('/apimovies')
+      : searchForm.addEventListener('submit', search);
 };

@@ -26,21 +26,6 @@ const processMoviesPreview = (movies: Movie[]) => {
   previewMovieContainer.appendChild(fragment.cloneNode(true));
 }
 
-const backgroundInput = (input: HTMLInputElement, customProperty: string) => {
-  return input.style.setProperty('--background', `var(${customProperty})`);
-}
-
-const singleInputValidation = (input: HTMLInputElement) => {
-  if (input.value.trim().length > 0) {
-    backgroundInput(input, '--bg4')
-    return true;
-  } else {
-    backgroundInput(input, '--error1');
-    setTimeout(() => { backgroundInput(input, '--bg3') }, 600);
-    return false;
-  }
-}
-
 const setObserver = (callback: IntersectionObserverCallback) => {
   const observer = new IntersectionObserver(callback);
   observer.observe(previewMovieContainer.lastElementChild!);
@@ -72,12 +57,25 @@ const processResponseOmdb = (data: responseOmdb) => {
   return pages;
 };
 
-const goFwd = (user: string, pass: string) => {
+
+/**
+ * ==========================================
+ *  Export functions - Principal Connection
+ * ==========================================
+ */
+
+export const clearSearch = () => {
+  previewMovieContainer.innerHTML = '';
+  favoritesContainer.innerHTML = '';
+
+}
+
+export const goFwd = (user: string, pass: string) => {
   createNewUser(user, pass);
   location.assign('/apimovies/search/');
 }
 
-const goSearch = async (title: string, page = 1) => {
+export const goSearch = async (title: string, page = 1) => {
   const data = await uriMovies.findByTitle(title, page);
   const pagesResult = processResponseOmdb(data);
 
@@ -96,37 +94,10 @@ const goSearch = async (title: string, page = 1) => {
 
 }
 
-/**
- * ==========================================
- *  Export functions - Principal Connection
- * ==========================================
- */
-
-export const clearSearch = () => {
-  previewMovieContainer.innerHTML = '';
-  favoritesContainer.innerHTML = '';
-
-}
-
 export const validateFavorites = () => {
   const info = actualUser();
   (!info || info.user.data.favorites?.length === 0)
     ? (clearSearch()
       , emptyFavorites.classList.toggle('after'))
     : renderFavoritesStorage(info.user.data.favorites!);
-}
-
-export const validateInputLogin = (userInput: HTMLInputElement, passInput: HTMLInputElement) => {
-
-  if (singleInputValidation(userInput) &&
-    singleInputValidation(passInput)) {
-    return goFwd(userInput.value, passInput.value);
-  }
-}
-
-export const validateInputSearch = async (searchInput: HTMLInputElement) => {
-  if (singleInputValidation(searchInput)) {
-    clearSearch();
-    return await goSearch(searchInput.value);
-  }
 }
