@@ -39,9 +39,3 @@ The app shows 10 entries max per search. Without pagination.
 #
 ## Contributing
 Pull requests are welcome.
-
-Contact:
-
-g.ram.bt@hotmail.com
-
-+52 1 5580444372
