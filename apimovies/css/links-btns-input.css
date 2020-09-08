@@ -124,9 +124,7 @@
   background: transparent;
   color: var(--linkActive);
 }
-.btn:hover{
-  color: var(--font3);
-}
+
 .btn_search{
   position: absolute;
   top: 0;
