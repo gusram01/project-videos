@@ -64,10 +64,10 @@ export const actualPath = () => {
   const loginForm = document.getElementById('login_form') as HTMLFormElement;
   const searchForm = document.getElementById('search_form') as HTMLFormElement;
 
-  (location.pathname === '/apimovies/' || location.pathname === '/apimovies')
+  (location.pathname === '/')
     ? (sessionStorage.clear()
       , loginForm.addEventListener('submit', login))
     : (sessionStorage.length === 0)
-      ? location.assign('/apimovies')
+      ? location.assign('/')
       : searchForm.addEventListener('submit', search);
 };

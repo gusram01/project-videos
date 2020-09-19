@@ -70,6 +70,7 @@
   display: grid;
   grid-template-columns:repeat(auto-fit, minmax(250px, 305px));
   justify-content: space-evenly;
+  align-self: center;
   gap: 1rem;
   width: 96%;
 }
@@ -130,6 +131,7 @@
   width: 100%;
   margin: 6vh 0 0 0;
   padding: 0;
+  text-align: center;
 }
 .image_wrapper .btn{
   position: absolute;
@@ -149,9 +151,10 @@
   font-size: 5rem;
 }
 .image_wrapper img{
-  width: 100%;
+  width: 96%;
+  max-width: 400px;
   object-fit: contain;
-  object-position: top;
+  object-position: 0% 50%;
 }
 
 .details_body{

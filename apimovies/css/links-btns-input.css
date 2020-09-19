@@ -80,6 +80,12 @@
   color: var(--font-nav);
 }
 
+
+.link.continue{
+  text-decoration: underline;
+  color: var(--font-nav);
+}
+
 .label{
   margin: 0 10px;
 }

@@ -59,7 +59,7 @@ export const movieDetail = (movie: Movie) => {
   const div: HTMLDivElement = document.createElement('div');
   const idsFavStorage = favoritesStorage();
 
-  if (movie.Poster === 'N/A') movie.Poster = '/assets/no-image.jpg';
+  if (movie.Poster === 'N/A') movie.Poster = '/assets/img/no-image.jpg';
   const fav = (idsFavStorage.includes(movie.imdbID!))
     ? 'fav'
     : '';
@@ -94,7 +94,7 @@ export const favorites = (favoritesStore: Movie[]) => {
   favoritesStore.forEach(fav => {
     const div: HTMLDivElement = document.createElement('div');
 
-    if (fav.Poster === 'N/A') fav.Poster = '/assets/no-image.jpg';
+    if (fav.Poster === 'N/A') fav.Poster = '/assets/img/no-image.jpg';
     const favIcon = (idsFavStorage.includes(fav.imdbID!))
       ? 'fav'
       : '';

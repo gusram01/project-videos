@@ -2,3 +2,7 @@ node_modules/
 docs/
 dist/
 public/
+tsc/
+.firebase/
+.firebasesrc
+firebase.json

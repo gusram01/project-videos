@@ -72,7 +72,7 @@ export const clearSearch = () => {
 
 export const goFwd = (user: string, pass: string) => {
   createNewUser(user, pass);
-  location.assign('/apimovies/search/');
+  location.assign('/search/');
 }
 
 export const goSearch = async (title: string, page = 1) => {
