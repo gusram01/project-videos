@@ -1,9 +1,8 @@
-# "The finder" info movie
+## "The finder" info movie
 Basic app for find info about favorite movie
 
-#
+### Vanilla JS app with Webpack
 
-## Webpack app
 Node modules:
 ```
 npm install
@@ -22,7 +21,13 @@ npm start
 ```
 
 #
-## Usage
+### App - live 
+
+
+<https://gus-apimovies.web.app/>
+
+
+### Usage
 Only two routes:
 
 Home: "/"

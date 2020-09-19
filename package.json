@@ -9,6 +9,8 @@
     "url": "https://github.com/gusram01/project-videos"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "firebase deploy",
     "build": "set NODE_ENV=production && webpack --config config/webpack.config.prod.js",
     "postbuild": "postcss dist/src/css/**/*.css --use autoprefixer --no-map -r",
     "start": "webpack-dev-server --config config/webpack.config.dev.js"
