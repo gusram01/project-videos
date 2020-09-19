@@ -93,7 +93,8 @@ export const butttons = (ev: Event) => {
     return element.firstElementChild!.classList.toggle('fav');
   }
   if (element.matches('.more')) {
-    if (window.location.pathname === '/') {
+    if (window.location.pathname === '/project-videos'
+      || window.location.pathname === '/project-videos/') {
       return loginContainer.classList.toggle('after');
     }
   }

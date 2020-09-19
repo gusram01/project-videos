@@ -24,7 +24,7 @@ module.exports = {
   output: {
     filename: 'src/js/[name].[hash].js',
     path: path.resolve(__dirname, '..', 'dist'),
-    publicPath: '/',
+    publicPath: '/project-videos',
   },
   optimization: {
     namedModules: false,

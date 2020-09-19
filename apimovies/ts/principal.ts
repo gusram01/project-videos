@@ -64,10 +64,12 @@ export const actualPath = () => {
   const loginForm = document.getElementById('login_form') as HTMLFormElement;
   const searchForm = document.getElementById('search_form') as HTMLFormElement;
 
-  (location.pathname === '/')
+  (location.pathname === '/project-videos'
+    || location.pathname === '/project-videos/')
     ? (sessionStorage.clear()
       , loginForm.addEventListener('submit', login))
     : (sessionStorage.length === 0)
-      ? location.assign('/')
+      ? (location.assign('/project-videos/')
+        , console.log(location.pathname))
       : searchForm.addEventListener('submit', search);
 };
