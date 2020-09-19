@@ -5,8 +5,7 @@ let moveY = 0;
 
 export const navEffect = (e: Event) => {
 
-  if (window.location.pathname === '/project-videos/search'
-    || window.location.pathname === '/project-videos/search/') {
+  if (window.location.pathname === '/search') {
     (moveY < window.scrollY)
       ? (header.style.setProperty('--moveY', '-150%')
         , navPricipal.style.setProperty('--moveNY', '200%')
