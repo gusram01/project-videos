@@ -69,5 +69,6 @@ export const actualPath = () => {
       , loginForm.addEventListener('submit', login))
     : (sessionStorage.length === 0)
       ? location.assign('/')
-      : searchForm.addEventListener('submit', search);
+      : (console.log(window.history.state)
+        , searchForm.addEventListener('submit', search));
 };
