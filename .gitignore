@@ -4,5 +4,3 @@ dist/
 public/
 tsc/
 .firebase/
-.firebasesrc
-firebase.json
